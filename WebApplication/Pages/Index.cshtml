@@ -1,0 +1,101 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">BattleSHIP GOTY EDITION</h1>
+</div>
+
+
+<form method="post">
+  <div class="row">
+    <div class="col">
+      <input asp-for="PlayerA" class="form-control" type="text" placeholder="First Player Name" size="50" required>
+    </div>
+      <div class="col">
+          <input asp-for="PlayerB" class="form-control" type="text" placeholder="Second Player Name" size="50" required>
+      </div>
+      <div class="col">
+          <input asp-for="GameName" class="form-control" type="text" placeholder="Game name" size="50" required>
+      </div>
+      <div class="col">
+              <label asp-for="BoatsCanTouch" class="form-control">Boats Can Touch:</label>
+          <select asp-for="BoatsCanTouch"  class="form-control">
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+          </select>
+      </div>
+      <div class="col">
+        <label asp-for="BoardSize" class="form-control">Boardsize:</label>
+        
+        <select asp-for="BoardSize"  class="form-control">
+            @for (int i = 0; i < @Model.BoardSizesList.Count; i++)
+            {
+                <option value="@i">@Model.BoardSizesList[i]</option>
+            }
+        </select>
+    </div>  
+    <div class="col">
+       <button type="submit" class="btn btn-primary" asp-page-handler="NewGame">New Game</button>
+    </div>
+  </div>
+</form>
+
+<hr/>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Game[0].CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Game[0].Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Game[0].PlayerA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Game[0].PlayerB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Game[0].BoardWidth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Game[0].BoardHeight)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @for (var i = 0; i < Model.Game.Count; i++) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Game[i].CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Game[i].Name)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => Model.PlayersA[i].Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.PlayersB[i].Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Game[i].BoardWidth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Game[i].BoardHeight)
+            </td>
+            <td>
+                <a asp-page="./Gameplay/Index" asp-route-id="@Model.Game[i].GameId">Load</a> 
+            </td>
+            <td>
+                <a asp-page="./Index" asp-route-id="@Model.Game[i].GameId">Delete</a> 
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

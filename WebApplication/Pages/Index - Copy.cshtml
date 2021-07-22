@@ -1,0 +1,74 @@
+﻿@page
+@model IndexModels
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div asp-validation-summary="All"></div>
+
+@Model.X - @Model.Y
+<div class="d-flex justify-content-between px-2">
+    <span>Player @Model.Game.PlayerA</span>
+    <span>Player @Model.Game.PlayerB</span>
+</div>
+<div class="d-flex justify-content-between px-2">
+    <table class="table table-striped table-dark">
+        @for (int y = 0; y < Model.GameBoard.GetLength(1); y++)
+        {
+            <tr>
+                @for (int x = 0; x < Model.GameBoard.GetLength(0); x++)
+                {
+                    @if(Model.Game.NextMoveByP1)
+                    {
+                        <td><a asp-route-x="@x" asp-route-y="@y">@Model.Game.GetCellValue(x, y, 1)</a></td>
+                    }
+                    else
+                    {
+                        <td><span>@Model.Game.GetCellValue(x, y, 1)</span></td>
+                    }
+                }
+            </tr>
+        }
+
+    </table>
+    
+    <table class="table table-striped table-light d-b">
+        @for (int y = 0; y < Model.GameBoard.GetLength(1); y++)
+        {
+            <tr>
+                @for (int x = 0; x < Model.GameBoard.GetLength(0); x++)
+                {
+                    @if(!Model.Game.NextMoveByP1)
+                    {
+                        <td><a asp-route-x="@x" asp-route-y="@y">@Model.Game.GetCellValue(x, y, 2)</a></td>
+                    }
+                    else
+                    {
+                        <td><span>@Model.Game.GetCellValue(x, y, 2)</span></td>
+                    }
+                }
+            </tr>
+        }
+    </table>
+</div>
+@if(Model.GameStarted != "true")
+{
+    <form method="post">
+    
+        <label asp-for="PlayerA" class="control-label"></label>
+        <input asp-for="PlayerA" class = "form-control"/>
+        <input asp-for="GameStarted" type="hidden" value="true"/>
+        <span asp-validation-for="PlayerA" class="text-danger"></span>
+    
+        <label asp-for="PlayerB" class="control-label"></label>
+        <input asp-for="PlayerB" class = "form-control"/>
+        <span asp-validation-for="PlayerB" class="text-danger"></span>
+    
+        <input type="submit" value="Submit" class="btn btn-primary" />
+    </form>
+}

@@ -1,2 +1,2 @@
-# CSharp-BattleshipGame
-Battleship game written on C# and Blazor
+# Battleship Game
+written on C# by Alikhan Sailekeyev

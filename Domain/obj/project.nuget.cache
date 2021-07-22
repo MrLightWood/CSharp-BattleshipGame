@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "p/GBHx1IPV65JLTeXl5GPsVck1coqly4LxlRcosXva3CkM0Ayn+0K+Oi2L80n2F5dg1qxaLLsLd0THsfJhwOWw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\saile\\RiderProjects\\Demo01\\Domain\\Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\saile\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

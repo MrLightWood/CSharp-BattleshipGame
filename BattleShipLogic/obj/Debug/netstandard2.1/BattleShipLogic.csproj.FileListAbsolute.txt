@@ -1,0 +1,16 @@
+C:\Users\saile\RiderProjects\Demo01\BattleShipLogic\bin\Debug\netstandard2.1\BattleShipLogic.deps.json
+C:\Users\saile\RiderProjects\Demo01\BattleShipLogic\bin\Debug\netstandard2.1\BattleShipLogic.dll
+C:\Users\saile\RiderProjects\Demo01\BattleShipLogic\bin\Debug\netstandard2.1\BattleShipLogic.pdb
+C:\Users\saile\RiderProjects\Demo01\BattleShipLogic\obj\Debug\netstandard2.1\BattleShipLogic.csprojAssemblyReference.cache
+C:\Users\saile\RiderProjects\Demo01\BattleShipLogic\obj\Debug\netstandard2.1\BattleShipLogic.AssemblyInfoInputs.cache
+C:\Users\saile\RiderProjects\Demo01\BattleShipLogic\obj\Debug\netstandard2.1\BattleShipLogic.AssemblyInfo.cs
+C:\Users\saile\RiderProjects\Demo01\BattleShipLogic\obj\Debug\netstandard2.1\BattleShipLogic.csproj.CoreCompileInputs.cache
+C:\Users\saile\RiderProjects\Demo01\BattleShipLogic\obj\Debug\netstandard2.1\BattleShipLogic.dll
+C:\Users\saile\RiderProjects\Demo01\BattleShipLogic\obj\Debug\netstandard2.1\BattleShipLogic.pdb
+C:\Users\saile\RiderProjects\Demo01\BattleShipLogic\bin\Debug\netstandard2.1\DAL.dll
+C:\Users\saile\RiderProjects\Demo01\BattleShipLogic\bin\Debug\netstandard2.1\Domain.dll
+C:\Users\saile\RiderProjects\Demo01\BattleShipLogic\bin\Debug\netstandard2.1\DAL.pdb
+C:\Users\saile\RiderProjects\Demo01\BattleShipLogic\bin\Debug\netstandard2.1\Domain.pdb
+C:\Users\saile\RiderProjects\Demo01\BattleShipLogic\obj\Debug\netstandard2.1\BattleShipLogic.csproj.CopyComplete
+C:\Users\saile\RiderProjects\Demo01\BattleShipLogic\bin\Debug\netstandard2.1\MenuSystem.dll
+C:\Users\saile\RiderProjects\Demo01\BattleShipLogic\bin\Debug\netstandard2.1\MenuSystem.pdb

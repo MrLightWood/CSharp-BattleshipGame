@@ -1,0 +1,131 @@
+﻿@page
+@using Domain.Enums
+@model WebApplication.Pages.GamePlay.Index
+
+@functions
+{
+    string GetCellContent(int x, int y, int boardNum)
+    {
+        var res = @Model.BattleShipGame.GetCellValue(x, y, boardNum) switch
+        {
+            ECellState.Empty => "#",
+            ECellState.Bomb => "X",
+            ECellState.Ship => "#",
+            ECellState.Shiphit => "@",
+            _ => ""
+            };
+        return res;
+    }
+    
+    string GetCellColor(int x, int y, int boardNum)
+    {
+        var res = @Model.BattleShipGame.GetCellValue(x, y, boardNum) switch
+        {
+            ECellState.Empty => "text-warning",
+            ECellState.Bomb => "text-danger",
+            ECellState.Ship => "text-warning",
+            ECellState.Shiphit => "text-success",
+            _ => ""
+            };
+        return res;
+    }
+}
+
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>BATTLESHIP</title>
+</head>
+<body>
+
+<div class="d-flex justify-content-between px-2">
+    <span>Player @Model.BattleShipGame.PlayerA</span>
+    <span>Player @Model.BattleShipGame.PlayerB</span>
+</div>
+<div class="d-flex justify-content-between px-2">
+    <table class="table table-striped table-dark">
+        @for (int y = 0; y < Model.BattleShipGame.GetLengthBoard(1); y++)
+        {
+            <tr>
+                @for (var x = 0; x < Model.BattleShipGame.GetLengthBoard(0); x++)
+                {
+                    @if(!Model.BattleShipGame.NextMoveByP1 && Model.BattleShipGame.PlayerBType == (int) EPlayerType.Human)
+                    {
+                        @if (!Model.GameFinished)
+                        {
+                            <td><a class="@GetCellColor(x, y, 1)" asp-route-id="@Model.Game.GameId" asp-route-x="@x" asp-route-y="@y">@GetCellContent(x, y, 1)</a></td>
+                        }
+                        else
+                        {
+                            <td><span class="@GetCellColor(x, y, 1)">@GetCellContent(x, y, 1)</span></td>
+                        }
+                    }
+                    else
+                    {
+                        <td><span class="@GetCellColor(x, y, 1)">@GetCellContent(x, y, 1)</span></td>
+                    }
+                }
+            </tr>
+        }
+
+    </table>
+    
+    <table class="table table-striped table-light d-b">
+        @for (int y = 0; y < Model.BattleShipGame.GetLengthBoard(1); y++)
+        {
+            <tr>
+                @for (var x = 0; x < Model.BattleShipGame.GetLengthBoard(0); x++)
+                {
+                    @if(Model.BattleShipGame.NextMoveByP1 && Model.BattleShipGame.PlayerAType == (int) EPlayerType.Human)
+                    {
+                        @if(!Model.GameFinished)
+                        {
+                            <td><a class="@GetCellColor(x, y, 2)" asp-route-id="@Model.Game.GameId" asp-route-x="@x" asp-route-y="@y">@GetCellContent(x, y, 2)</a></td>
+                        }
+                        else
+                        {
+                            <td><span class="@GetCellColor(x, y, 2)">@GetCellContent(x, y, 2)</span></td>
+                        }
+                    }
+                    else
+                    {
+                        <td><span class="@GetCellColor(x, y, 2)">@GetCellContent(x, y, 2)</span></td>
+                    }
+                }
+            </tr>
+        }
+    </table>
+</div>
+<div class="container">
+    @*
+    @if(Model.BattleShipGame.PlayerBType == (int) EPlayerType.AI && !Model.BattleShipGame.NextMoveByP1)
+    {
+        <a class="btn-primary" asp-route-id="@Model.Game?.GameId" asp-route-bot="true">BOT TURN</a>
+    }
+    *@
+    @if(Model.GameFinished)
+    {
+        <div class="card text-white bg-success mb-3 text-center">
+          <div class="card-header">Game Has Been Finished</div>
+            <div class="card-body">
+                @if(!Model.BattleShipGame.NextMoveByP1)
+                {
+                    <h5 class="card-title">Player @Model.BattleShipGame.PlayerA Has won this game</h5>
+                }
+                else
+                {
+                    <h5 class="card-title">Player @Model.BattleShipGame.PlayerB Has won this game</h5>
+                }
+                </div>
+        </div>
+    }
+</div>
+
+</body>
+</html>
